@@ -67,9 +67,9 @@ export default function History() {
                   <RightClickable index={index} onRightClick={setAnchor}>
                     <Track
                       listenedAt={new Date(item.played_at)}
-                      artists={item.track.full_artists}
-                      album={item.track.full_album}
-                      track={item.track}
+                      artists={item.track!.full_artists}
+                      album={item.track!.full_album}
+                      track={item.track!}
                     />
                   </RightClickable>
                 </Selectable>

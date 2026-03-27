@@ -53,7 +53,7 @@ export default function Track(props: TrackProps) {
     },
     {
       ...trackGrid.cover,
-      node: playable && <PlayButton id={track.id} covers={album?.images || []} />,
+      node: playable && <PlayButton id={track.id} covers={album?.images ?? []} />,
     },
     {
       ...trackGrid.title,

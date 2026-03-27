@@ -33,7 +33,7 @@ export default function Track({
   const columns = [
       {
         ...trackGrid.cover,
-        node: <PlayButton id={track.id} covers={album?.images || []} />,
+        node: <PlayButton id={track.id} covers={album?.images ?? []} />,
       },
       {
         ...trackGrid.title,

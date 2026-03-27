@@ -113,7 +113,7 @@ export interface TrackInfo {
 }
 
 export type TrackInfoWithFullArtistAlbum = TrackInfo & {
-  track?: Track & {
+  track: Track & {
     full_album: Album;
     full_artists: Artist[];
   };

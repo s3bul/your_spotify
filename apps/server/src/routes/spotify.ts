@@ -83,8 +83,11 @@ router.get("/gethistory", isLoggedOrGuest, async (req, res) => {
     offset,
     number,
     start && end ? { start, end } : undefined,
+    { id: { $ne: null } },
   );
-  res.status(200).send(tracks);
+  // Mongoose `populate` sets `track: null` if the reference no longer exists, so we filter them out to send only valid data.
+  // Note: Filtering directly at the DB level (to perfectly preserve pagination limits) would require rewriting `getSongs` to an aggregation pipeline.
+  res.status(200).send(tracks.filter((t: any) => t.track != null));
 });
 
 const interval = z.object({

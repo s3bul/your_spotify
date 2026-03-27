@@ -221,6 +221,7 @@ export const getSongs = async (
   offset: number,
   number: number,
   inter?: { start: Date; end: Date },
+  match?: Record<string, any>,
 ) => {
   const fullUser = await UserModel.findById(userId).populate({
     path: "tracks",
@@ -230,6 +231,7 @@ export const getSongs = async (
         ? { played_at: { $gt: inter.start, $lt: inter.end } }
         : undefined),
       blacklistedBy: { $exists: 0 },
+      ...match,
     },
     options: { skip: offset, limit: number, sort: { played_at: -1 } },
     populate: {
